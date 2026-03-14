@@ -1,225 +1,123 @@
-# Generate Meeting Minutes from Meeting Transcript
+# Meeting Minutes from Transcript
 
-## Description
-This prompt converts a raw meeting transcript into structured meeting minutes using a predefined Excel template.
+## Purpose
 
-It is designed for Product Management and operational workflows where meetings are recorded and later converted into formal documentation.
+Generate structured meeting minutes from a meeting transcript and populate a provided meeting template.
 
-The prompt analyzes the transcript, extracts key discussion points, decisions, and actions, and fills a meeting minutes template while preserving the original file structure and formatting.
+The objective is to extract relevant information from the discussion and accurately complete the provided format without altering its structure.
 
-The process includes validation steps to ensure the generated document maintains formatting integrity and accurately reflects the content of the meeting.
+The final result must be delivered as a downloadable document using the same format as the provided template.
 
-Typical use cases include:
-- Product roadmap meetings
-- Roadmap refinement sessions
-- Stakeholder alignment meetings
-- Product reviews
-- Operational follow-ups
+---
 
-The final output is a downloadable Excel file that follows the organization’s meeting minutes format.
+## Inputs
+
+The prompt expects the following inputs:
+
+- Meeting transcript
+- Meeting template (Excel or Word format)
+
+Optional inputs:
+
+- Additional context about the meeting
+- Specific instructions related to the document
 
 ---
 
 ## Language Handling
 
-The prompt supports multilingual meetings.
+The generated content must follow the language used in the meeting transcript.
 
 Rules:
 
-1. The output content must match the language of the meeting transcript.
-2. The structure and labels of the template must remain in the original language of the template.
-3. Only the inserted information should follow the meeting language.
+- Spanish transcript → Spanish content
+- English transcript → English content
+
+If the template is written in a specific language:
+
+- The structure and labels of the template must remain unchanged.
+- Only the content fields should be populated.
+
+---
+
+## Prompt Instructions
+
+You are an expert Product Management assistant specialized in documentation and meeting analysis.
+
+Your task is to analyze the meeting transcript and populate the provided meeting template.
+
+Follow the process below.
+
+### Step 1 — Extract structured notes
+
+First analyze the meeting transcript and extract the following information:
+
+- main discussion topics
+- key insights
+- decisions made
+- action items
+- responsible stakeholders
+- open questions
+
+Organize this information clearly before attempting to populate the template.
+
+This step is used to structure the information and should not be included in the final output.
+
+---
+
+### Step 2 — Populate the template
+
+Using the structured notes extracted in Step 1:
+
+1. Map the information to the corresponding fields in the template.
+2. Populate the template while preserving its original structure.
+3. Ensure the information is placed in the correct sections.
+
+Important rules:
+
+- Do not modify the structure of the template.
+- Do not rename sections, tables, sheets or headings.
+- Do not add new columns, rows or sections unless they already exist.
+- Do not invent information that is not present in the transcript.
+- If information is missing, leave the field blank or indicate "Not specified".
+
+---
+
+## Output Format
+
+The final output must be the completed version of the provided template.
+
+Rules:
+
+- The document structure must remain exactly the same.
+- Only the relevant fields should be filled.
+- No additional sections, sheets or formatting changes should be introduced.
+
+The output must be generated as a downloadable file using the same format as the original template.
 
 Examples:
 
-Spanish meeting + Spanish template  
-→ Everything remains in Spanish.
-
-Spanish meeting + English template  
-→ Template labels remain in English  
-→ Meeting content is inserted in Spanish.
-
-English meeting + Spanish template  
-→ Template labels remain in Spanish  
-→ Meeting content is inserted in English.
-
-If multiple languages are present in the meeting, prioritize the dominant language.
+Excel template → downloadable `.xlsx` file  
+Word template → downloadable `.docx` file
 
 ---
 
-# PROMPT
+## Validation
 
-## ROLE
-Act as a corporate documentation analyst specialized in meeting analysis and executive documentation.
+Before producing the final document, verify that:
 
-Your task is to analyze a meeting transcript and generate structured meeting minutes using a provided Excel template.
+- The template structure has not been modified.
+- All populated fields correspond to information present in the transcript.
+- The language of the generated content matches the meeting transcript.
+- The file remains valid and compatible with its original format.
 
----
-
-## OBJECTIVE
-
-Take:
-
-1. a meeting transcript
-2. an Excel meeting minutes template
-
-and generate:
-
-- a completed meeting minutes document
-- using the provided template structure
-- preserving all formatting
-- ready for download and organizational use
+If issues are detected, correct them before generating the downloadable file.
 
 ---
 
-## INPUTS
+## Change Log
 
-Two files will be provided.
-
-### Meeting Transcript
-A text or document file containing the full conversation of the meeting.
-
-### Meeting Minutes Template
-An `.xlsx` file containing the corporate meeting minutes format.
-
-This template must be preserved and only filled with the extracted information.
-
----
-
-## RULES
-
-- Do not modify the structure of the Excel template.
-- Do not delete columns or headers.
-- Do not change merged cells.
-- Do not translate template labels.
-- Only populate the corresponding fields.
-- Do not invent information that is not present in the transcript.
-- Ensure the document accurately reflects the discussion of the meeting.
-- Use concise and professional writing.
-
----
-
-## PROCESS
-
-### Step 1 — Analyze the transcript
-
-Read the full transcript and identify:
-
-- meeting objective
-- key discussion topics
-- relevant context
-- decisions taken
-- action items
-- responsible parties if mentioned
-
-Focus only on information clearly discussed during the meeting.
-
----
-
-### Step 2 — Structure the information
-
-Transform the extracted information into structured meeting documentation.
-
-#### Meeting Objective
-Write a concise paragraph explaining the purpose of the meeting.
-
-#### Topics Discussed
-Summarize between **3 and 6 main topics** discussed.
-
-#### Actions / Commitments
-Identify specific actions derived from the meeting.
-
-If a responsible party is not explicitly mentioned, assign a logical group such as:
-
-- Product Team
-- Technical Team
-- Development Team
-
----
-
-### Step 3 — Populate the template
-
-Load the provided Excel template and populate the appropriate sections with the extracted information.
-
-Preserve:
-
-- all formatting
-- merged cells
-- template structure
-- template language
-
-Only insert the meeting information in the appropriate fields.
-
----
-
-### Step 4 — Validation
-
-Before generating the final file perform the following validations.
-
-#### Content Validation
-
-Confirm that:
-
-- the meeting objective is present
-- discussion topics are listed
-- actions are defined when applicable
-
-#### Structure Validation
-
-Confirm that:
-
-- the Excel structure remains unchanged
-- merged cells remain intact
-- no template labels were modified
-
-#### Consistency Validation
-
-Confirm that:
-
-- the information matches the transcript
-- no decisions were fabricated
-- no information was added without evidence
-
----
-
-### Step 5 — Automatic correction
-
-If any validation fails:
-
-1. correct the extracted information
-2. re-validate the document
-3. repeat until all validations pass
-
-Only generate the final document after all checks succeed.
-
----
-
-### Step 6 — File naming
-
-The generated file must preserve the original template name and append the meeting identifier.
-
-Required format:
-
-[ORIGINAL_TEMPLATE_NAME] - [SHORT_MEETING_TITLE] (MONTH YEAR).xlsx
-
-Example:
-
-AT-F-07-V3 Acta de Reuniones - Roadmap Refinement OWL (March 2026).xlsx
-
-The meeting title should be short and descriptive.
-
----
-
-## FINAL OUTPUT
-
-Generate a downloadable Excel file using the completed template.
-
-Output format:
-
-File generated:  
-[FINAL_FILE_NAME]
-
-Download:  
-[download link]
-
-The document must be ready for corporate use without additional edits.
+| Version | Description |
+|--------|-------------|
+| v2.0 | Updated prompt structure to align with repository standards and support Excel or Word templates |
+| v1.0 | Initial version of the prompt |
