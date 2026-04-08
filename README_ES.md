@@ -28,7 +28,7 @@ Idioma: Español | English version available at: [README.md](README.md)
 
 Este repositorio es una colección personal de **prompts de IA, workflows y plantillas de soporte** diseñadas para mejorar la productividad en actividades de Product Management.
 
-El objetivo es construir una **biblioteca organizada de prompts reutilizables** que apoyen tareas comunes del trabajo de producto como:
+El objetivo es construir una **biblioteca organizada de prompts reutilizables**, estructurada por nivel de complejidad y uso, que apoye tareas comunes del trabajo de producto como:
 
 - documentación de producto  
 - análisis de requerimientos  
@@ -48,13 +48,14 @@ Más que una colección cerrada, este repositorio funciona como un **playbook vi
 
 El repositorio está organizado en carpetas según el tipo de herramienta o workflow.
 
-```
+```text
 prompts/
-    meetings/
-    product-management/
-    analysis/
-    documentation/
-    automation/
+    general/
+    advanced/
+        meeting-minutes/
+        analysis/
+        documentation/
+        prioritization/
 
 templates/
 
@@ -65,7 +66,12 @@ examples/
 
 ### prompts
 
-Contiene prompts estructurados para diferentes casos de uso de Product Management como análisis, documentación, procesamiento de reuniones y automatización de flujos de trabajo.
+Contiene prompts estructurados para diferentes casos de uso de Product Management.
+
+Los prompts se organizan en dos categorías principales:
+
+- **general/**: prompts standalone, reutilizables y diseñados para casos de uso amplios  
+- **advanced/**: prompts estructurados organizados por casos de uso específicos o workflows, que requieren mayor contexto, control o múltiples pasos  
 
 ### templates
 
@@ -100,7 +106,20 @@ Esto permite reutilizar los mismos prompts en diferentes entornos de trabajo sin
 
 ## Estructura de los Prompts
 
-Todos los prompts siguen una estructura estándar para facilitar su mantenimiento y reutilización.
+Los prompts de este repositorio están diseñados para seguir una estructura consistente, permitiendo distintos niveles de complejidad.
+
+### General vs Advanced Prompts
+
+Los prompts se organizan en dos niveles:
+
+- **General prompts**: son simples, standalone y reutilizables directamente.
+- **Advanced prompts**: son más estructurados y pueden incluir instrucciones multi-step, validaciones, reglas de formato o mayor control sobre la salida.
+
+Los prompts avanzados se utilizan típicamente en escenarios más específicos o como parte de workflows más complejos.
+
+### Estructura Base
+
+Todos los prompts siguen una estructura base estandarizada para facilitar su mantenimiento y reutilización.
 
 Normalmente incluyen:
 
@@ -140,10 +159,11 @@ Este repositorio puede utilizarse como una **biblioteca personal de prompts para
 Flujo típico de uso:
 
 1. Identificar la tarea a resolver (análisis, documentación, reuniones, etc.).
-2. Navegar a la carpeta correspondiente dentro de `prompts`.
-3. Copiar el prompt y adaptarlo al contexto específico.
-4. Proporcionar las entradas necesarias (documentos, transcripciones, requerimientos, etc.).
-5. Si se requiere un formato específico, utilizar la plantilla correspondiente ubicada en `templates`.
+2. Definir si la tarea requiere un **prompt general** o un **prompt avanzado**.
+3. Navegar a la carpeta correspondiente dentro de `prompts`.
+4. Copiar el prompt y adaptarlo al contexto específico.
+5. Proporcionar las entradas necesarias (documentos, transcripciones, requerimientos, etc.).
+6. Si se requiere un formato específico, utilizar la plantilla correspondiente ubicada en `templates`.
 
 Con el tiempo los prompts pueden mejorar, ampliarse o combinarse en **workflows más complejos**.
 
