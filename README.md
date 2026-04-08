@@ -28,7 +28,7 @@ Language: English | Spanish version available at: [README_ES.md](README_ES.md)
 
 This repository is a personal collection of **AI prompts, workflows, and supporting templates** designed to improve productivity in Product Management activities.
 
-The goal of this project is to build an organized **library of reusable prompts** that support common product work such as:
+The goal of this project is to build an organized **library of reusable prompts**, structured by level of complexity and use, that support common product work such as:
 
 - product documentation  
 - requirement analysis  
@@ -48,13 +48,14 @@ Rather than aiming to create a perfect collection from the start, this repositor
 
 The repository is organized into folders based on the type of tool or workflow.
 
-```
+```text
 prompts/
-    meetings/
-    product-management/
-    analysis/
-    documentation/
-    automation/
+    general/
+    advanced/
+        meeting-minutes/
+        analysis/
+        documentation/
+        prioritization/
 
 templates/
 
@@ -65,7 +66,12 @@ examples/
 
 ### prompts
 
-Contains structured prompts for different Product Management use cases such as analysis, documentation, meeting processing, and workflow automation.
+Contains structured prompts for different Product Management use cases.
+
+Prompts are organized into two main categories:
+
+- **general/**: standalone, reusable prompts designed for flexible and broad use cases  
+- **advanced/**: structured prompts organized by specific use cases or workflows, requiring additional context, control, or multiple steps  
 
 ### templates
 
@@ -100,7 +106,20 @@ This allows the same prompt to be reused across multiple working environments wi
 
 ## Prompt Structure
 
-All prompts follow a standardized structure to make them easier to maintain and reuse.
+Prompts in this repository are designed to follow a consistent structure while supporting different levels of complexity.
+
+### General vs Advanced Prompts
+
+Prompts are organized into two levels:
+
+- **General prompts** are simple, standalone, and directly reusable.
+- **Advanced prompts** are more structured and may include multi-step instructions, validations, formatting rules, or stricter output control.
+
+Advanced prompts are typically used for more specific scenarios or as part of larger workflows.
+
+### Base Structure
+
+All prompts follow a standardized base structure to make them easier to maintain and reuse.
 
 Typical sections include:
 
@@ -140,10 +159,11 @@ This repository can be used as a **personal prompt library for Product Managemen
 A typical workflow is:
 
 1. Identify the task you want to solve (analysis, documentation, meeting processing, etc.).
-2. Navigate to the relevant folder in `prompts`.
-3. Copy the prompt and adapt it to your specific context.
-4. Provide the required inputs (documents, transcripts, requirements, etc.).
-5. If a specific format is required, use the corresponding template located in the `templates` folder.
+2. Decide whether the task requires a **general prompt** or a more structured **advanced prompt**.
+3. Navigate to the corresponding folder in `prompts`.
+4. Copy the prompt and adapt it to your specific context.
+5. Provide the required inputs (documents, transcripts, requirements, etc.).
+6. If a specific format is required, use the corresponding template located in the `templates` folder.
 
 Over time, prompts can be improved, expanded, or combined into **workflows** for more complex processes.
 
